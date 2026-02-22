@@ -1,14 +1,19 @@
 spring:
   application:
-    name: "configserver"
+    name: configserver
+
   profiles:
-    #active: native
     active: git
+
   cloud:
     config:
       server:
-        native:
-         # search-location: "classpath:/config"
+        git:
+          uri: https://github.com/arindammusib/config-server
+          default-label: main
+          clone-on-start: true
+          force-pull: true
+          timeout: 5
 
 server:
   port: 8071
